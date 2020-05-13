@@ -71,7 +71,12 @@ router.get("/:id", validateUserId, (req, res) => {
     .then((user) => {
       console.log(user);
       if (user) {
-        res.status(200).json({ message: `user is ${user.name}, id is ${id}` });
+        res
+          .status(200)
+          .json({
+            message: `user is ${user.name}, id is ${id}`,
+            userObj: user,
+          });
       } else {
         res.status(404).json({ message: "User with this ID does not exist" });
       }
